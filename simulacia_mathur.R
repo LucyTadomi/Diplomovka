@@ -62,7 +62,7 @@ for(pokus in 1:N){
     S2 = S2 + a*sin(pi*(i/n[pokus]))*rank[bod]
     
     #vars1_part <- vars1_part + cos(2*pi*(i/n[pokus]))*(rank[bod]^2)
-    #vars2_part <- vars2_part + sin(2*pi*(i/n[pokus]))*(rank[bod]^2)
+    #vars2_part <- vars2_part - cos(2*pi*(i/n[pokus]))*(rank[bod]^2)
     #print(vars1_part)
     #vars2_part
     
@@ -72,7 +72,7 @@ for(pokus in 1:N){
   S1 <- S1/n[pokus]
   S2 <- S2/n[pokus]
   
-  #vars1 <- (1/2*(n[pokus]^2))*vars1_part + (n[pokus]/6)*(1+1/n[pokus])*(1+1/2*n[pokus]) #HAHA, toto vychadza zaporne
+  #vars1 <- (1/2*(n[pokus]^2))*vars1_part + (n[pokus]/6)*(1+1/n[pokus])*(1+1/2*n[pokus]) 
   #vars2 <- (1/2*(n[pokus]^2))*vars2_part + (n[pokus]/6)*(1+1/n[pokus])*(1+1/2*n[pokus])
   
   #Z1 <- S1/sqrt(vars1)
@@ -97,11 +97,13 @@ ks_test$p.value
 hist(stats[stats<30], probability = TRUE, breaks = 40, main = "Histogram s chí-kvadrát hustotou", xlab = "Value", 
      col = "lightblue", border = "black")
 
-# Create a sequence of x-values for the CDF
+# Create a sequence of x-values for the PDF
 x_vals <- seq(0, 40, length = 20000)
 
-# Add the CDF of the Chi-squared distribution (df = 2)
+# Add the PDF of the Chi-squared distribution (df = 2)
 lines(x_vals, dchisq(x_vals, df=2), col = "red", lwd = 2)
 
 # Add a legend
 legend("right", legend = c("Chi-Squared PDF (df=2)"), col = "red", lwd = 2)
+
+#ZAVER: Mathurova statistika sa sprava podla chi^2
